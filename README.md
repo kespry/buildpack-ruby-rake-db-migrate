@@ -1,4 +1,4 @@
-# Heroku buildpack for running arbitrary rake tasks on deploy
+# Heroku buildpack for running rake db migration on deploy
 
 This buildpack is intended for use after the regular [ruby-buildpack].
 
@@ -10,17 +10,13 @@ If you are using the default buildpack, manually set your buildpack to Heroku's 
 heroku buildpacks:set https://github.com/heroku/heroku-buildpack-ruby
 ```
 
-Append the buildpack-ruby-rake-deploy-tasks to your buildpack list:
+Append the buildpack-ruby-rake-db-migrate to your buildpack list:
 
 ```
-heroku buildpacks:add https://github.com/gunpowderlabs/buildpack-ruby-rake-deploy-tasks
+heroku buildpacks:add https://github.com/kespry/buildpack-ruby-rake-db-migrate
 ```
 
-Configure DEPLOY_TASKS environment variable with the tasks you want to run:
-
-```
-heroku config:set DEPLOY_TASKS='db:migrate cache:clear'
-```
+You are all set! Now whenever a deployment happens, the db will be migrated automatically during the deploy.
 
 # License
 
